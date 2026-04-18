@@ -5,7 +5,7 @@ public class Test {
         String response1 = "balance=120.50;megabytes=2048;sms=0;minutes=150;roaming=0;tariff=Premium";
         formatBalance(response1);
 
-        String response2 = "balance=30;megabytes=0;sms=5;minutes=50;roaming=0;tariff=Basic";
+        String response2 = "balance=30;megabytes=512;sms=5;minutes=50;roaming=0;tariff=Basic";
         formatBalance(response2);
 
         String response3 = "balance=500;megabytes=5120;sms=100;minutes=300;roaming=256;tariff=PremiumPlus";
@@ -18,26 +18,32 @@ public class Test {
         double balance =  0;
         for (String s : str) {
             String[] split = s.split("=");
-            if (split[1].equals("0")) {
+            String key = split[0];
+            String value = split[1];
+            if (value.equals("0")) {
                 continue;
             }
-            if (split[0].equals("megabytes")) {
-                int megabytes = Integer.parseInt(split[1]);
+            if (key.equals("megabytes")) {
+                int megabytes = Integer.parseInt(value);
                 if (megabytes >= 1024) {
                     int gigabyte = megabytes / 1024;
-                    s = "megabytes = " + gigabyte + " ГБ" + " (" + megabytes + ")";
+                    s = "Интернет " + gigabyte + " ГБ" + " (" + megabytes + "МБ)";
+                } else {
+                    s = "Интернет " + megabytes +  " МБ";
                 }
             }
 
-            if (split[0].equals("balance")) {
-                s = split[0] + " = " + split[1] + " тг";
-                balance = Double.parseDouble(split[1]);
-            } else if (split[0].equals("minutes")) {
-                s = split[0] + " = " + split[1] + " мин";
-            } else if (split[0].equals("roaming")) {
-                s = split[0] + " = " + split[1] + " МБ";
-            } else if (split[0].equals("sms")) {
-                s = split[0] + " = " + split[1] + " шт";
+            if (key.equals("balance")) {
+                s =  "Баланс = " + value + " тг";
+                balance = Double.parseDouble(value);
+            } else if (key.equals("minutes")) {
+                s =  "Минута = " + value + " мин";
+            } else if (key.equals("roaming")) {
+                s =  "Роуминг = " + value + " МБ";
+            } else if (key.equals("sms")) {
+                s =  "СМС = " + value + " шт";
+            } else if (key.equals("tariff")) {
+                s = "Тариф = " + value;
             }
             System.out.println(s);
         }
