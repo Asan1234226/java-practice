@@ -61,8 +61,20 @@ public class Test {
             System.out.println("roaming: " + roaming + " MB");
             System.out.println("sms: " + sms + " pcs");
             System.out.println("tariff: " + tariff + "\n");
-        } else {
-            if (lang.equals("ru")) {
+        } else if (lang.equals("ru")) {
+            System.out.println("\n" + "Баланс: " + balance + "тг");
+            if (megabytes > 1024) {
+                int gigabytes = megabytes / 1024;
+                System.out.println("Интернет " + gigabytes + " ГБ " + " (" + megabytes + " МБ " + ")");
+            } else {
+                System.out.println("Интернет " + megabytes + " МБ");
+            }
+            System.out.println("Минута: " + minutes + " мин");
+            System.out.println("Роуминг: " + roaming + " Мб");
+            System.out.println("СМС: " + sms + " шт");
+            System.out.println("Тариф: " + tariff + "\n");
+        } else
+            if (lang.equals("kz")) {
                 System.out.println("\n" + "Баланс: " + balance + "тг");
                 if (megabytes > 1024) {
                     int gigabytes = megabytes / 1024;
@@ -70,24 +82,10 @@ public class Test {
                 } else {
                     System.out.println("Интернет " + megabytes + " МБ");
                 }
-                System.out.println("Минута: " + minutes + " мин");
+                System.out.println("Минуттар: " + minutes + " мин");
                 System.out.println("Роуминг: " + roaming + " Мб");
-                System.out.println("СМС: " + sms + " шт");
+                System.out.println("SMS: " + sms + " шт");
                 System.out.println("Тариф: " + tariff + "\n");
-            } else {
-                if (lang.equals("kz")) {
-                    System.out.println("\n" + "Баланс: " + balance + "тг");
-                    if (megabytes > 1024) {
-                        int gigabytes = megabytes / 1024;
-                        System.out.println("Интернет " + gigabytes + " ГБ " + " (" + megabytes + " МБ " + ")");
-                    } else {
-                        System.out.println("Интернет " + megabytes + " МБ");
-                    }
-                    System.out.println("Минуттар: " + minutes + " мин");
-                    System.out.println("Роуминг: " + roaming + " Мб");
-                    System.out.println("SMS: " + sms + " шт");
-                    System.out.println("Тариф: " + tariff + "\n");
-                }
             }
             if (lang.equals("ru")) {
                 if (balance < 50) {
@@ -99,7 +97,6 @@ public class Test {
 
                 }
             }
-        }
         if (lang.equals("en")) {
             if (balance < 50) {
                 System.out.println("\n" + "Top up your account with 100 tenge now and get +500 minutes of talk time!");
@@ -108,15 +105,6 @@ public class Test {
             } else if (balance >= 200) {
                 System.out.println("Activate roaming in 15 countries! Top up your account and get a 50% discount!\n");
 
-            }
-        }
-        if (lang.equals("")) {
-            if (balance < 50) {
-                System.out.println("Срочно пополните счет на 100 тг и получите +500 минут разговора!");
-            } else if (balance >= 50 && balance <= 200) {
-                System.out.println("Пополните счет на 80 тг и получите +1 ГБ интернета в подарок!");
-            } else if (balance >= 200) {
-                System.out.println("Активируйте роуминг в 15 странах! Пополните счет и получите 50% скидку!");
             }
         }
         if (lang.equals("kz")) {
