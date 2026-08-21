@@ -1,13 +1,12 @@
 package U;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+
 import java.util.Scanner;
 
 public class Planner {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        String[] shopingList = new String[100];
+        String[] shoPingList = new String[100];
         int newID = 0;
         int count = 0;
         while (true) {
@@ -22,7 +21,7 @@ public class Planner {
                 System.out.println("Введите название продукта для добавление в корзину:");
                 String name = scanner.nextLine();
 
-                shopingList[count] = name;
+                shoPingList[count] = name;
                 newID++;
                 count++;
             } else if (operation == 2) {
@@ -30,7 +29,7 @@ public class Planner {
                     System.out.println("Корзина пуста");
                 } else {
                     for (int i = 0; i < count; i++) {
-                        System.out.println((i + 1) + " " + shopingList[i]);
+                        System.out.println((i + 1) + " " + shoPingList[i]);
                     }
                 }
             } else if (operation == 3) {
@@ -41,7 +40,7 @@ public class Planner {
                     int num = Integer.parseInt(scanner.nextLine());
 
                     if (newID == num) {
-                        shopingList[count - 1]  = null;
+                        shoPingList[count - 1]  = null;
                         count --;
                         System.out.println("продукт удален");
                     } else {
